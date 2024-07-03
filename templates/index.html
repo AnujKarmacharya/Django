@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+</head>
+
+<body>
+    <h1>TODO list</h1>
+    <table border="1">
+        <th>Tasks</th>
+        <th>description</th>
+        <th>status</th>
+        {% for task in tasks %}
+        <tr>
+            <td>{{task.name}}</td>
+            <td>
+                {% if task.description is None%}
+                Nothing here.....
+                {%else%}
+                {{task.description}}
+                {% endif %}
+            </td>
+            <td>
+                {% if task.status %}
+                Completed
+    
+                {%else%}
+                Pending
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
