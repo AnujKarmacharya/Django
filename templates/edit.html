@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Edit{% endblock title %}
+{% block body %}
+<h1>Edit TASK</h1>
+<form action="/task/{{task.pk}}/edit" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Task Name</label>
+        <input type="text" name="name" class="form-control" id="name" value="{{task.name}}" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="floatingTextarea" class="form-label">Description</label>
+        <textarea name="description" class="form-control" placeholder="Write Description here!" id="floatingTextarea">
+            {% if task.description is None %}
+            {%else%}
+            {{task.description}}
+            {% endif %}
+        </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock body %}
